@@ -1,0 +1,116 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+	string check;
+	cout << "      *WELLCOME TO GPA CALCULATOR*     \n";
+	do
+	{
+		string cal;
+		cout << "\nFOR SGPA PRESS s:\n";
+		cout << "\nFOR CGPA PRESS c:\n";
+		cin >> cal;
+		if (cal == "c")
+		{
+			int nsemester;
+			double sgpa, cgpa, sum=0.0;
+			cout << "HOW MANY SEMESTER YOU WANT TO CALCULATE CGPA :";
+			cin >> nsemester;
+			for (int i = 1; i <= nsemester; i++)
+			{
+				cout << "INPUT YOUR " << i << " SEMESTER GPA :";
+				cin >> sgpa;
+				sum = sum + sgpa;
+			}
+			cgpa = sum / nsemester;
+			cout << "YOUR CGPA IS :" << cgpa << endl;
+		}
+		else if (cal=="s")
+		{
+			int nsub,credit,creditsum=0;
+			double sgpa=0.0,sum=0.0;
+			double Aplus = 4.00, A = 4.00, Aneg = 3.67, Bplus = 3.33, B = 3.00, Bneg = 2.67, Cplus = 2.33, C = 2.00, Cneg = 1.67, Dplus = 1.33, D = 1.00,F=0.00;
+			string course,grade;
+			cout << "ENTER NO. OF SUBJECT :";
+			cin >> nsub;
+			for (int i = 1;i <= nsub; i++)
+			{
+				cout << "ENTER COURSE " << i << " NAME:";
+				cin >> course;
+				cout << "ENTER COURSE " << i << " CREDIT:";
+				cin >> credit;
+				creditsum = creditsum + credit;
+				cout << "ENTER COURSE " << i << " Grade:";
+				cin >> grade;
+			    if (grade == "A+" || grade == "a+" || grade == "Aplus" || grade == "aplus")
+				{
+					sum = sum + credit*Aplus;
+				}
+				else if (grade == "A"|| grade == "a")
+				{
+					sum = sum + credit*A;
+				}
+				else if (grade == "A-" || grade == "a-" || grade == "Aneg" || grade == "aneg")
+				{
+					sum = sum + credit*Aneg;
+				}
+				else if (grade == "B+" || grade == "b+" || grade == "Bplus" || grade == "bplus")
+				{
+					sum = sum + credit*Bplus;
+				}
+				else if (grade == "B" || grade == "b")
+				{
+					sum = sum + credit*B;
+				}
+				else if (grade == "B-" || grade == "b-" || grade == "Bneg" || grade == "bneg")
+				{
+					sum = sum + credit*Bneg;
+				}
+				else if (grade == "C+" || grade == "c+" || grade == "Cplus" || grade == "cplus")
+				{
+					sum = sum + credit*Cplus;
+				}
+				else if (grade == "C"||grade=="c")
+				{
+					sum = sum + credit*C;
+				}
+				else if (grade == "C-" || grade == "c-" || grade == "Cneg" || grade == "cneg")
+				{
+					sum = sum + credit*Cneg;
+				}
+				else if (grade == "D+" || grade == "d+" || grade == "Dplus" || grade == "dplus")
+				{
+					sum = sum + credit*Dplus;
+				}
+				else if (grade == "D"||grade=="d")
+				{
+					sum = sum + credit*D;
+				}
+				else if (grade == "F"||grade=="f")
+				{
+					sum = sum + credit*F;
+				}
+				else
+				{
+					cout << "INVALID GRADE!Again Input\n";
+					continue;
+				}
+				cout << endl;
+			}
+			sgpa = sum / creditsum;
+			cout << "YOUR SGPA IS :" << sgpa << endl;
+		}
+		else if (cal != "s" || cal != "c")
+		{
+		cout << endl;
+		cout << "INVALID INPUT AGAIN!\n";
+		continue;
+		}
+		cout << "TO USE AGAIN PRESSS y ELSE ANY KEY!\n";
+		cin >> check;
+	} while (check != "y");
+	cout << "THANKS FOR USING GPA CALCULATOR\n";
+	system("pause");
+	return 0;
+}
